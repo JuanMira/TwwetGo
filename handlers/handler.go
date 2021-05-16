@@ -14,7 +14,6 @@ import (
 //Handler port and server listening
 func Handlers() {
 	router := mux.NewRouter()
-
 	router.HandleFunc("/registro", middleware.CheckBD(routers.Registro)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
