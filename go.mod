@@ -1,4 +1,4 @@
-module github.com/JuanMira/twwetgo
+module github.com/JuanMira/tweetgo
 
 go 1.16
 
