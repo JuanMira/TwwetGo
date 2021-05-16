@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	middleware "github.com/JuanMira/tweetgo/middlewares"
+	"github.com/JuanMira/tweetgo/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -12,6 +14,9 @@ import (
 //Handler port and server listening
 func Handlers() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/registro", middleware.CheckBD(routers.Registro)).Methods("POST")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
