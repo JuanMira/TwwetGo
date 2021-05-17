@@ -37,7 +37,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 
 	_, status, bdErr := bd.InsertData(t)
 	if bdErr != nil {
-		http.Error(w, "A error has ocurred trying create new user", 400)
+		http.Error(w, "A error has ocurred trying create new user ", 400)
 		return
 	}
 
