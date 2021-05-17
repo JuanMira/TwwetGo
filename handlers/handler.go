@@ -18,8 +18,7 @@ func Handlers() {
 	router := mux.NewRouter()
 	router.HandleFunc("/registro", mw.CheckBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", mw.CheckBD(routers.Login)).Methods("POST")
-	router.HandleFunc("/viewProfile", mw.CheckBD(mw.ValidateJWT(routers.ViewProfile))).Methods("GEt")
-
+	router.HandleFunc("/viewProfile", mw.CheckBD(mw.ValidateJWT(routers.ViewProfile))).Methods("GET")
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"

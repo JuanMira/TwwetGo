@@ -8,7 +8,7 @@ import (
 )
 
 //Show profile data
-func showProfile(w http.ResponseWriter, r http.Request) {
+func ViewProfile(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 
 	if len(id) < 1 {
@@ -23,7 +23,7 @@ func showProfile(w http.ResponseWriter, r http.Request) {
 		return
 	}
 
-	w.Header().Set("content-type", "application/json")
+	w.Header().Set("context-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(profile)
 

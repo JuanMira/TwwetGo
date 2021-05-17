@@ -1,4 +1,4 @@
-package middleware
+package middlewares
 
 import (
 	"net/http"
@@ -8,11 +8,12 @@ import (
 
 //validation jwt
 func ValidateJWT(next http.HandlerFunc) http.HandlerFunc {
-	return func(rw http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
 		_, _, _, err := routers.ProcessToken(r.Header.Get("Authorization"))
 		if err != nil {
-			http.Error(rw, "Token wrong ", http.StatusBadRequest)
+			http.Error(w, "Token wrong ", http.StatusBadRequest)
+			return
 		}
-		next.ServeHTTP(rw, r)
+		next.ServeHTTP(w, r)
 	}
 }
