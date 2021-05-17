@@ -14,7 +14,7 @@ func CheckUserExist(e string) (models.User, bool, string) {
 	db := MongoCN.Database("tweetGo")
 	col := db.Collection("Users")
 	defer cancel()
-	condition := bson.M{"email": e}
+	condition := bson.M{"Email": e}
 
 	var result models.User
 
