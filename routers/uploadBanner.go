@@ -10,7 +10,7 @@ import (
 	"github.com/JuanMira/tweetgo/models"
 )
 
-func uploadBanner(w http.ResponseWriter, r *http.Request) {
+func UploadBanner(w http.ResponseWriter, r *http.Request) {
 	file, handler, err := r.FormFile("banner")
 	var extension = strings.Split(handler.Filename, ".")[1]
 	var fileUpload string = "uploads/banners/" + IdUser + "." + extension
