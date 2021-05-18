@@ -33,6 +33,7 @@ func Handlers() {
 	router.HandleFunc("/getBanner", mw.CheckBD(mw.ValidateJWT(routers.GetBanner))).Methods("GET")
 
 	router.HandleFunc("/insertRelation", mw.CheckBD(mw.ValidateJWT(routers.InsertRelation))).Methods("POST")
+	router.HandleFunc("/deleteRelation", mw.CheckBD(mw.ValidateJWT(routers.DeleteRelation))).Methods("DELETE")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
