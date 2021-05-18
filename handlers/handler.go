@@ -26,6 +26,12 @@ func Handlers() {
 	router.HandleFunc("/readTweets", mw.CheckBD(mw.ValidateJWT(routers.RetrieveTweets))).Methods("GET")
 	router.HandleFunc("/deleteTweet", mw.CheckBD(mw.ValidateJWT(routers.DeleteTweet))).Methods("DELETE")
 
+	//avatar and banner
+	router.HandleFunc("/uploadAvatar", mw.CheckBD(mw.ValidateJWT(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/getAvatar", mw.CheckBD(mw.ValidateJWT(routers.GetAvatar))).Methods("GET")
+	router.HandleFunc("/uploadBanner", mw.CheckBD(mw.ValidateJWT(routers.UploadBanner))).Methods("POSt")
+	router.HandleFunc("/getBanner", mw.CheckBD(mw.ValidateJWT(routers.GetBanner))).Methods("GET")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
