@@ -19,6 +19,12 @@ func Handlers() {
 	router.HandleFunc("/registro", mw.CheckBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", mw.CheckBD(routers.Login)).Methods("POST")
 	router.HandleFunc("/viewProfile", mw.CheckBD(mw.ValidateJWT(routers.ViewProfile))).Methods("GET")
+	router.HandleFunc("/modifyProfile", mw.CheckBD(mw.ValidateJWT(routers.ModifyProfile))).Methods("PUT")
+
+	//tweet route
+	router.HandleFunc("/insertTweet", mw.CheckBD(mw.ValidateJWT(routers.Tweet))).Methods("POST")
+	router.HandleFunc("/readTweets", mw.CheckBD(mw.ValidateJWT(routers.RetrieveTweets))).Methods("GET")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
