@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"log"
 	"net/http"
 	"os"
 
@@ -34,11 +33,16 @@ func Handlers() {
 
 	router.HandleFunc("/insertRelation", mw.CheckBD(mw.ValidateJWT(routers.InsertRelation))).Methods("POST")
 	router.HandleFunc("/deleteRelation", mw.CheckBD(mw.ValidateJWT(routers.DeleteRelation))).Methods("DELETE")
+	router.HandleFunc("/findRelation", mw.CheckBD(mw.ValidateJWT(routers.FindRelations))).Methods("GET")
+
+	router.HandleFunc("/listUsers", mw.CheckBD(mw.ValidateJWT(routers.ListUser))).Methods("GET")
+
+	router.HandleFunc("/readFollowersTweets", mw.CheckBD(mw.ValidateJWT(routers.ReadFollowersTweets))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
 	}
 	handler := cors.AllowAll().Handler(router)
-	log.Fatal(http.ListenAndServe(":"+PORT, handler))
+	http.ListenAndServe(":"+PORT, handler)
 }

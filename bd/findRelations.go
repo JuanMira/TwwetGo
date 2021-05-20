@@ -17,7 +17,7 @@ func FindRelations(t models.Relation) (bool, error) {
 	col := db.Collection("relations")
 
 	condition := bson.M{
-		"UserId":         t.UserId,
+		"UserID":         t.UserId,
 		"UserRelationId": t.UserRelationId,
 	}
 
